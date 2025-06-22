@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognifyz Level 3 – Task 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="level3.css" />
+</head>
+<body>
+  <header>
+    ✨ Cognifyz Level 3 – Task 1: Interactive Gallery & Slideshow
+  </header>
+
+  <h2>🖼️ Clickable Image Gallery</h2>
+  <div class="gallery">
+    <img src="https://c4.wallpaperflare.com/wallpaper/682/435/620/naruto-anime-uzumaki-naruto-jiraiya-naruto-shippuuden-hd-wallpaper-preview.jpg" class="thumbnail" onclick="openLightbox(this.src)" alt="Thumb 1">
+    <img src="https://c4.wallpaperflare.com/wallpaper/555/163/727/anime-demon-slayer-kimetsu-no-yaiba-zenitsu-agatsuma-hd-wallpaper-preview.jpg" class="thumbnail" onclick="openLightbox(this.src)" alt="Thumb 2">
+    <img src="https://c4.wallpaperflare.com/wallpaper/884/100/6/anime-anime-boys-jujutsu-kaisen-satoru-gojo-hd-wallpaper-preview.jpg" class="thumbnail" class="thumbnail" onclick="openLightbox(this.src)" alt="Thumb 3">
+    <img src="https://c4.wallpaperflare.com/wallpaper/683/96/3/solo-leveling-sung-jin-woo-manga-anime-boys-hd-wallpaper-preview.jpg" class="thumbnail" class="thumbnail" onclick="openLightbox(this.src)" alt="Thumb 4">
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Expanded View">
+  </div>
+
+  <h2>🎞️ Professional CSS Slideshow</h2>
+  <div class="slideshow">
+    <div class="slides" id="slideTrack">
+      <img src="https://c4.wallpaperflare.com/wallpaper/682/435/620/naruto-anime-uzumaki-naruto-jiraiya-naruto-shippuuden-hd-wallpaper-preview.jpg" class="slide active" alt="Slide 1">
+      <img src="https://c4.wallpaperflare.com/wallpaper/555/163/727/anime-demon-slayer-kimetsu-no-yaiba-zenitsu-agatsuma-hd-wallpaper-preview.jpg" class="slide" alt="Slide 2">
+      <img src="https://c4.wallpaperflare.com/wallpaper/683/96/3/solo-leveling-sung-jin-woo-manga-anime-boys-hd-wallpaper-preview.jpg" class="slide" alt="Slide 3">
+    </div>
+  </div>
+
+  <footer>
+    🌐 Designed by Aditya Dahake | Cognifyz Technologies Internship – Level 3 Task 1
+  </footer>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+      });
+      slideIndex = (index + slides.length) % slides.length;
+      slides[slideIndex].classList.add("active");
+    }
+
+    setInterval(() => {
+      showSlide(slideIndex + 1);
+    }, 8000); // slower fade every 8 seconds
+  </script>
+</body>
+</html>
